@@ -1,0 +1,56 @@
+body {
+    padding     : 0;
+    margin      : 0;
+    color       : #282828;
+    font-family : helvetica, arial, sans-serif;
+    font-size   : 18px;
+    line-height : 32px;
+  }
+   
+  .header {
+    position   : relative;
+    background : #282828 url("/img/cover.png") no-repeat;
+    height     : 500px;
+    margin     : 0 0 200px 0;
+  }
+   
+  .header img {
+    position      : absolute;
+    width         : 120px;
+    height        : 120px;
+    border-radius : 100%;
+    border        : 3px solid #fff;
+    margin        : -60px 0 0 -60px;
+    left          : 50%;
+    top           : 500px;
+  }
+   
+  .navigation {
+    position   : absolute;
+    width      : 100%;
+    top        : 600px;
+    text-align : center;
+  }
+   
+  .navigation a {
+    padding         : 20px 0 5px 0;
+    margin          : 0 10px 15px 10px;
+    font-size       : 20px;
+    color           : #333;
+    font-family     : helvetica, arial, sans-serif;
+    text-decoration : none;
+    text-transform  : uppercase;
+    border-bottom   : 3px solid #fff;
+  }
+   
+  .navigation a:hover, .navigation a.active {
+    color         : #228E47;
+    border-bottom : 3px solid #228E47;
+  }
+   
+  .content {
+    margin     : 0 auto;
+    width      : 700px;
+    padding    : 0 0 50px 0;
+    text-align : justify;
+  }
