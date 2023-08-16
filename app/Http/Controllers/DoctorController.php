@@ -17,11 +17,11 @@ class DoctorController extends Controller
             'email' =>['required','email'],
             'password' =>['required']
         ])->validate();
-
+        
         
         if (auth()->guard('doctors')->attempt(request()->only(['email','password'])))
         {
-            return view('doctor_dashboard', ['doctor'=>auth()->guard('doctors')->user()]);
+            return redirect(route('doctor_dashboard'));
         }   
         return redirect()->back()->withErrors(['email'=>"Invalid "]);
     }

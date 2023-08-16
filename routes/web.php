@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorDashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/saveRoute', [UserController::class, 'save']) ->name('save');
 Route::get('/doctor', [DoctorController::class, 'show'])->name('doctor');
-Route::post('/doctor/login', [DoctorController::class, 'login_doctor']) ->name('login_doctor');
+Route::post('/doctor', [DoctorController::class, 'login_doctor']) ->name('login_doctor_123');
 
-Route::get('/doctor_dashboard', function () {
-    return view('doctor_dashboard');
-});
+Route::get('/doctor_dashboard', [DoctorDashboard::class, 'home']) ->name('doctor_dashboard');
+Route::post('/doctor_dashboard', [DoctorDashboard::class, 'doctor_logout']) ->name('doctor_logouts');
