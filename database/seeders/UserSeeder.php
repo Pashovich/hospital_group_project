@@ -5,24 +5,24 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
-class DoctorSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\Doctor::create(
+        \App\Models\User::create(
             [
                 'id'=>0,
-                'first_name' => 'Doctor',
-                'last_name' =>'One',
+                'name' => 'Patient',
                 'email' => 'doctor_one@mail.com',
-                'phone' => '+42012345678',
                 'password'=> Hash::make('password'),
-                'speciality' =>'GP'
             ]
             );
+    }
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
     }
 }

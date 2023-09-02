@@ -11,7 +11,7 @@ class Doctor extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'doctor';
+    protected $table = 'doctors';
 
 
     protected $fillable = [

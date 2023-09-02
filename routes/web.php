@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\DoctorDashboard;
+use App\Http\Controllers\DoctorDashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/doctor', [DoctorController::class, 'show'])->name('doctor');
-Route::post('/doctor', [DoctorController::class, 'login_doctor']) ->name('login_doctor_123');
 
-Route::get('/doctor_dashboard', [DoctorDashboard::class, 'home']) ->name('doctor_dashboard');
-Route::post('/doctor_dashboard', [DoctorDashboard::class, 'doctor_logout']) ->name('doctor_logouts');
+
+Route::get('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_show'])->name('doctor_login');
+Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_doctor'])->name('doctor_login');
+
+
+Route::middleware(['auth.doctor:doctors'])->group(function () {
+    Route::get('/doctor_dashboard', [DoctorDashboardController::class, 'dashboard_home'])->name('doctor_dashboard');
+    Route::get('/doctor_dashboard/logout', [DoctorDashboardController::class, 'doctor_logout'])->name('doctor_logout');
+});
