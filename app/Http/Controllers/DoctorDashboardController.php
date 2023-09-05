@@ -30,12 +30,17 @@ class DoctorDashboardController extends Controller
     public function dashboard_home(){
 
         $doctor = auth()->guard('doctors')->user();
-        $upcomming_users = DB::select('select * from appointments a inner join 
-        (select * from users) t on t.id = a.patient_id where doctor_id = ? order by a.date,a.time',
-         [auth()->guard('doctors')->id()]);
+        $currentDateTime = now();
+        $upcoming_users = DB::select('
+                SELECT *
+                FROM appointments a
+                INNER JOIN users t ON t.id = a.patient_id
+                WHERE a.date >= ? AND a.doctor_id = ?
+                ORDER BY a.date, a.time
+            ', [$currentDateTime, $doctor->id]);
         
 
-        foreach ($upcomming_users as $appointment) {
+        foreach ($upcoming_users as $appointment) {
             // Convert the date to a Carbon instance
             $date = Carbon::parse($appointment->date);
             
@@ -45,10 +50,35 @@ class DoctorDashboardController extends Controller
             // Update the original stdClass object with the formatted date
             $appointment->date = $formattedDate;
         }
-        return view('doctor_dashboard', ['doctor'=>$doctor, 'appointments'=>$upcomming_users]);
-
+        return view('doctor_dashboard', ['doctor'=>$doctor, 'appointments'=>$upcoming_users]);
     }
 
+
+    public function dashboard_past(){
+
+        $doctor = auth()->guard('doctors')->user();
+        $currentDateTime = now();
+        $past_appointments = DB::select('
+                SELECT *
+                FROM appointments a
+                INNER JOIN users t ON t.id = a.patient_id
+                WHERE a.date < ? AND a.doctor_id = ?
+                ORDER BY a.date, a.time
+            ', [$currentDateTime, $doctor->id]);
+        
+
+        foreach ($past_appointments as $appointment) {
+            // Convert the date to a Carbon instance
+            $date = Carbon::parse($appointment->date);
+            
+            // Format the date as "01 DayOfTheWeek ShortenedMonth"
+            $formattedDate = $date->format('d l M');
+            
+            // Update the original stdClass object with the formatted date
+            $appointment->date = $formattedDate;
+        }
+        return view('doctor_dashboard_past', ['doctor'=>$doctor, 'appointments'=>$past_appointments]);
+    }
     public function doctor_logout(){
         auth()->guard('doctors')->logout();
         return redirect(route('doctor_login'));

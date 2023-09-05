@@ -27,5 +27,6 @@ Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login
 
 Route::middleware(['auth.doctor:doctors'])->group(function () {
     Route::get('/doctor_dashboard', [DoctorDashboardController::class, 'dashboard_home'])->name('doctor_dashboard');
+    Route::get('/doctor_dashboard_past', [DoctorDashboardController::class, 'dashboard_past'])->name('doctor_dashboard_past');
     Route::get('/doctor_dashboard/logout', [DoctorDashboardController::class, 'doctor_logout'])->name('doctor_logout');
 });
