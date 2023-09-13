@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\DoctorController;
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +15,12 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::get('/welcome_page', function () {
+Route::get('/test', function () {
     return view('welcome_page');
 });
 
-
-Route::get('/doctor_dashboard', function () {
-    return view('welcome_page');
-});
-
-Route::post('/book-appointment', [AppointmentController::class, 'bookAppointment'])->name('book-appointment');
-Route::get('/search-doctor', [AppointmentController::class, 'searchDoctor']);
+Route::get('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_show'])->name('doctor_login');
+Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_doctor'])->name('doctor_login');
 
 Route::middleware(['auth.doctor:doctors'])->group(function () {
     Route::get('/doctor_dashboard', [DoctorDashboardController::class, 'dashboard_home'])->name('doctor_dashboard');
