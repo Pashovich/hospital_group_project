@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Doctor\'s Schedule')
 @section('content')
     <div class="container">
         <!-- banner starts -->

@@ -14,9 +14,15 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
+Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
+Route::get('/record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
 
 Route::post('/saveRoute', [UserController::class, 'save']) ->name('save');
 Route::get('/doctor', [DoctorController::class, 'show'])->name('doctor');
