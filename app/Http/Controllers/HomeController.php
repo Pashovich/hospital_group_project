@@ -75,4 +75,14 @@ class HomeController extends Controller
     {
         return view('record');
     }
+
+    /**
+     * Show the application login.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function login()
+    {
+        return view('login');
+    }
 }

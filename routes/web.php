@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +20,11 @@ use App\Http\Controllers\DoctorController;
 // });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
-Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
-Route::get('/schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
+Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/doctors-schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
 Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
-Route::get('/record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
+Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
+Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 
 Route::post('/saveRoute', [UserController::class, 'save']) ->name('save');
 Route::get('/doctor', [DoctorController::class, 'show'])->name('doctor');

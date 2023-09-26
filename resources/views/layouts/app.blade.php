@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase oswald-reg fs-16 text-white"
-                                href="#">Login</a>
+                                href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase oswald-reg fs-16 text-white"
