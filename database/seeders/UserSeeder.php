@@ -12,13 +12,22 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::create(
+        $users =  [
             [
-                'id'=>0,
-                'name' => 'Patient',
-                'email' => 'doctor_one@mail.com',
+                'id'=>1,
+                'name' => 'Patient_1',
+                'email' => 'patient_one@mail.com',
                 'password'=> Hash::make('password'),
-            ]
+            ],
+            [
+                'id'=>2,
+                'name' => 'Patient_2',
+                'email' => 'patient_two@mail.com',
+                'password'=> Hash::make('password_2'),
+            ],
+        ];
+        \App\Models\User::insert(
+            $users
             );
     }
     public function down(): void

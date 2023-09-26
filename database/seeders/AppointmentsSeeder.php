@@ -20,14 +20,26 @@ class AppointmentsSeeder extends Seeder
                 'status' => 'True',
                 'patient_id' =>1,
                 'doctor_id' => 1
-            ],
+            ]
+            );
+        \App\Models\Appointment::create(
             [
-                'date' => '2023-01-03',
+                'date' => '2023-01-02',
                 'time' =>'22:00',
                 'notes' => 'big note',
                 'status' => 'True',
-                'patient_id' =>1,
+                'patient_id' =>2,
                 'doctor_id' => 1
+            ]
+            );
+        \App\Models\Appointment::create(
+            [
+                'date' => '2023-11-02',
+                'time' =>'10:00',
+                'notes' => 'big note',
+                'status' => 'True',
+                'patient_id' =>1,
+                'doctor_id' => 2
             ]
             );
     }
