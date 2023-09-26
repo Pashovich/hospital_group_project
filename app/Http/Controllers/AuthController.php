@@ -29,6 +29,14 @@ class AuthController extends Controller
         $patient->state = $request->state;
         $patient->role = '1';
         $patient->password = Hash::make($request->password);
+
+        $patient->gender = $request->gender;
+        $patient->dob = $request->dob;
+        $patient->marital_status = $request->marital_status;
+        $patient->taking_medicine = $request->taking_medicine;
+        $patient->is_alcoholic = $request->is_alcoholic;
+        $patient->is_smoker = $request->is_smoker;
+        $patient->comments = $request->comments;
         $patient->save();
         return redirect('login');
         // Authenticate the patient (optional)

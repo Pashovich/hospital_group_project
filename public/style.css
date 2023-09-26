@@ -13,8 +13,8 @@ body {
 }
 
 .container {
-	width: 360px;
-	height: 400px;
+	width: 400px;
+	height: 500px;
 	margin: 8% auto;
 	background: #fff;
 	border-radius: 5px;
@@ -37,7 +37,7 @@ h3 {
 } */
 
 .step {
-	width: 280px;
+	width: 320px;
 	position: absolute;
 	top: 100px;
 	left: 40px;
@@ -52,6 +52,16 @@ h3 {
 	border-bottom: 1px solid #999;
 	outline: none;
 	background: transparent;
+}
+.step select {
+	width: 100%;
+	padding: 10px 5px;
+	margin: 5px 0;
+	border: 0;
+	border-bottom: 1px solid #999;
+	outline: none;
+	background: transparent;
+	color: #777;
 }
 
 ::placeholder {
@@ -77,15 +87,15 @@ h3 {
 }
 
 #step2 {
-	top: 400px;
+	top: 500px;
 }
 
 #step3 {
-	top: 450px;
+	top: 550px;
 }
 
 .step-row {
-	width: 360px;
+	width: 400px;
 	height: 40px;
 	margin: 0 auto;
 	display: flex;
