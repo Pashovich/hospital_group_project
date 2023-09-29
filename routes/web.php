@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\DoctorController;
@@ -15,9 +17,17 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::get('/test', function () {
-    return view('welcome_page');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/doctors-schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
+Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
+Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
+Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 
 Route::get('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_show'])->name('doctor_login');
 Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_doctor'])->name('doctor_login');
@@ -29,7 +39,3 @@ Route::middleware(['auth.doctor:doctors'])->group(function () {
     Route::get('/doctor_dashboard/make_prescription/{appointment_id}', [DoctorDashboardController::class, 'show_prescription'])->name('prescription');
     Route::post('/doctor_dashboard/make_prescription/{appointment_id}', [DoctorDashboardController::class, 'save_prescription'])->name('save_prescription');
 });
-
-Route::post('/book-appointment', [AppointmentController::class, 'bookAppointment'])->name('book-appointment');
-Route::get('/search-doctor', [AppointmentController::class, 'searchDoctor']);
-
