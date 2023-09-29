@@ -3,8 +3,9 @@
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DoctorDashboardController;
+use App\Http\Controllers\DoctorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,13 @@ Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appoint
 Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
 Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 
+Route::get('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_show'])->name('doctor_login');
+Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_doctor'])->name('doctor_login');
 
-Route::get('/doctor_dashboard', function () {
-    return view('doctor_dashboard');
+Route::middleware(['auth.doctor:doctors'])->group(function () {
+    Route::get('/doctor_dashboard', [DoctorDashboardController::class, 'dashboard_home'])->name('doctor_dashboard');
+    Route::get('/doctor_dashboard_past', [DoctorDashboardController::class, 'dashboard_past'])->name('doctor_dashboard_past');
+    Route::get('/doctor_dashboard/logout', [DoctorDashboardController::class, 'doctor_logout'])->name('doctor_logout');
+    Route::get('/doctor_dashboard/make_prescription/{appointment_id}', [DoctorDashboardController::class, 'show_prescription'])->name('prescription');
+    Route::post('/doctor_dashboard/make_prescription/{appointment_id}', [DoctorDashboardController::class, 'save_prescription'])->name('save_prescription');
 });

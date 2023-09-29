@@ -1,5 +1,7 @@
-use Illuminate\Http\Request;
+<?php
+
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {

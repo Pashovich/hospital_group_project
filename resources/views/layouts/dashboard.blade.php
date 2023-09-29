@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        @vite('resources/css/app.css')
+        @vite('resources/css/app_tail.css')
         <title>Laravel</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <style>
@@ -88,29 +88,7 @@
    </div>
 </aside>
 
-<div class="p-4 sm:ml-64">
-    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        @foreach ($appointments as $appointment)
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400">
-                <a href="#" class="appointment-link" data-toggle="application-info-{{$appointment->id}}">
-                    {{$appointment->name}}
-                </a>
-                <br>
-                {{$appointment->date}} {{$appointment->time}}
-            </p>
-        </div>
-        <div class="loginPopup" >
-         <div class="formPopup" id="application-info-{{$appointment->id}}" >
-         <div class="px-4 sm:px-0">
-         <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
-         <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
-      </div>
-            
-         </div>
-   </div>
-    @endforeach
-</div>
+    @yield('content')
     </body>
 </html>
 
