@@ -15,11 +15,12 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => ['nullable', 'string', 'max:191'],
             'email' => ['nullable', 'string', 'max:191'],
             'phone' => ['nullable', 'string', 'max:191'],
-            'massage' => ['nullable', 'string', 'max:191'],
+            'massage' => ['nullable', 'string', 'max:500'],
         ]);
 
         $contact = new Contact();
@@ -33,6 +34,6 @@ class ContactController extends Controller
             return back()->withInput()->with('fail', __('Feedback request failed!'));
         }
 
-        return back()->with('success', __('Thank you for your feedback'));
+        return redirect()->route('home')->with('success', __('Thank you for your feedback'));
     }
 }
