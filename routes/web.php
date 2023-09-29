@@ -26,9 +26,6 @@ Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appoint
 Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
 Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 
-Route::post('/saveRoute', [UserController::class, 'save']) ->name('save');
-Route::get('/doctor', [DoctorController::class, 'show'])->name('doctor');
-Route::post('/doctor/login', [DoctorController::class, 'login_doctor']) ->name('login_doctor');
 
 Route::get('/doctor_dashboard', function () {
     return view('doctor_dashboard');
