@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Contact Us')
 @section('content')
     <div class="container">
 
@@ -25,17 +25,17 @@
                                 </div>
 
                                 <div class="input-group">
-                                    <input type="email" name="email" placeholder="Your Email" required id="uEmail">
+                                    <input type="email" name="email" placeholder="Your Email" value="{{ old('email') }}" required id="uEmail">
                                     <small id="uEmailErr"></small>
                                 </div>
 
                                 <div class="input-group">
-                                    <input type="tel" name="phone" placeholder="Your Phone Number" required id="utel">
+                                    <input type="tel" name="phone" placeholder="Your Phone Number" value="{{ old('phone') }}" required id="utel">
                                     <small id="utelErr"></small>
                                 </div>
 
                                 <div class="input-group">
-                                    <textarea name="message" name="massage" placeholder="Your Message" required id="uNamemesstextarea"></textarea>
+                                    <textarea type="text" name="massage" placeholder="Your Message" required id="uNamemesstextarea">{{ old('message') }}</textarea>
                                     <small id="messErr"></small>
                                 </div>
 
