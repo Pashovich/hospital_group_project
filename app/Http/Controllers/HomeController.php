@@ -67,6 +67,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Show the application contact.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    /**
      * Show the application record.
      *
      * @return \Illuminate\Contracts\Support\Renderable

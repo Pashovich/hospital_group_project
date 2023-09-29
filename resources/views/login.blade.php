@@ -15,10 +15,8 @@
                                     <div class="banner-text">
                                         <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
                                         <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
-                                        <p class="mb-0 open-reg fs-13 text-white">Lorem Ipsum is simply dummy text of the
-                                            printing and
-                                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                                            ever since the 1500s</p>
+                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
+                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
                                     </div>
                                     <div class="banner-btn">
                                         <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
