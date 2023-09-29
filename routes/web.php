@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,24 +16,19 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::get('/welcome_page', function () {
-    return view('welcome_page');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/doctors-schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
+Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
+Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
+Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 
 
 Route::get('/doctor_dashboard', function () {
-    return view('welcome_page');
+    return view('doctor_dashboard');
 });
-
-Route::post('/book-appointment', [AppointmentController::class, 'bookAppointment'])->name('book-appointment');
-Route::get('/search-doctor', [AppointmentController::class, 'searchDoctor']);
-
-Route::middleware(['auth.doctor:doctors'])->group(function () {
-    Route::get('/doctor_dashboard', [DoctorDashboardController::class, 'dashboard_home'])->name('doctor_dashboard');
-    Route::get('/doctor_dashboard_past', [DoctorDashboardController::class, 'dashboard_past'])->name('doctor_dashboard_past');
-    Route::get('/doctor_dashboard/logout', [DoctorDashboardController::class, 'doctor_logout'])->name('doctor_logout');
-});
-
-Route::post('/book-appointment', [AppointmentController::class, 'bookAppointment'])->name('book-appointment');
-Route::get('/search-doctor', [AppointmentController::class, 'searchDoctor']);
-
