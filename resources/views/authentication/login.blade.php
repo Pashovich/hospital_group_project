@@ -1,11 +1,8 @@
-<html>
+@extends('layouts.app')
 
-<head>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="container">
+@section('title', 'Login')
+@section('content')
+<div class="container">
         <div class="step-row">
             <div id="progress"></div>
             <div class="step-col"><small style="color: white;">HMS</small></div>
@@ -16,7 +13,7 @@
             <div class="step" id="step1">
                 <h3>Sign In</h3>
 
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="email" placeholder="Email" required>
 
                 <input type="password" name="password" placeholder="Password" required>
                 <div class="btn-box">
@@ -27,10 +24,5 @@
             </div>
         </form>
 
-
     </div>
-
-    <script src="./scripts.js"></script>
-</body>
-
-</html>
+@endsection

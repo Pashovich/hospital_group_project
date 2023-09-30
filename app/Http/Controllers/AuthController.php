@@ -5,20 +5,24 @@ use App\Models\User;
 use Hash;
 use DB;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    
     public function register()
     {
         return view('authentication.register');
     }
     public function postRegister(Request $request)
     {
-        // dd($request->all());
 
         // Create a new patient
+
+        $martial_starus = ["" =>"", "0" => "Maried", "1" => "Signle"];
+        $alcohol_status = ["" =>"", "0" => "I don't drink", "1" => "1/2 Glass/Day","2" => "3/4 Glass/Day", "3" => "More than 4 Glass/Day"];
         $patient = new User();
         $patient->fname = $request->fname;
         $patient->lname = $request->lname;
@@ -32,17 +36,13 @@ class AuthController extends Controller
 
         $patient->gender = $request->gender;
         $patient->dob = $request->dob;
-        $patient->marital_status = $request->marital_status;
+        $patient->marital_status = $martial_starus[$request->marital_status];
         $patient->taking_medicine = $request->taking_medicine;
-        $patient->is_alcoholic = $request->is_alcoholic;
+        $patient->is_alcoholic = $alcohol_status[$request->is_alcoholic];
         $patient->is_smoker = $request->is_smoker;
         $patient->comments = $request->comments;
         $patient->save();
         return redirect('login');
-        // Authenticate the patient (optional)
-        // auth()->login($patient);
-
-        // Redirect or respond as needed
     }
 
 
@@ -53,34 +53,34 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        $checkUser = DB::table('users')
-            ->where('username', $request->username)
-            ->first();
-
-        if ($checkUser && Hash::check($request->password, $checkUser->password)) {
-            Session::put('id', $checkUser->id);
-            Session::put('email', $checkUser->email);
-            Session::put('username', $checkUser->username);
-            Session::put('role', $checkUser->role);
-
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)){
             return redirect('patient/dashboard');
-        } else {
+        }
+        else {
             return back()->with('error', 'Invalid credentials. Please try again.');
         }
     }
 
     public function patientDashboard()
     {
-        $user = DB::table('users')
-        ->where('id', Session::get('id'))
-        ->first();
-        return view('patient-dashboard',compact('user'));
+        $user =  Auth::user();
+        $query = "
+                SELECT *
+                FROM appointments a
+                left join doctors d on d.id = a.doctor_id
+                WHERE patient_id = {$user->id}
+            ";
+
+        $appoitments = DB::select($query);
+
+        return view('patient-dashboard',["appointments" => $appoitments, "user" => $user]);
     }
 
     public function logout()
     {
-        // Clear all session data
-        Session::flush();
+        Auth::logout();
+        // Session::flush();
         return redirect()->route('login'); 
     }
 

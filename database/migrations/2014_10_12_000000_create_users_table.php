@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('fname');
             $table->string('lname');
-            $table->string('username')->unique();
 
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->date('dob')->nullable();
             $table->string('address')->nullable();
@@ -25,12 +24,14 @@ return new class extends Migration
 
             $table->string('password');
             $table->string('role');
-            $table->integer('gender')->nullable();
-            $table->integer('marital_status')->nullable();
-            $table->integer('is_alcoholic')->nullable();
-            $table->integer('is_smoker')->nullable();
-            $table->integer('taking_medicine')->nullable();
-            $table->string('comments')->nullable();
+
+            $table->string('gender');
+            $table->timestamp('dob');
+            $table->string('marital_status');
+            $table->boolean('taking_medicine');
+            $table->string('is_alcoholic');
+            $table->boolean('is_smoker');
+            $table->string('comments');
             
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
