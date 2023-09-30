@@ -1,25 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      @vite('resources/css/app.css')
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="max-w-md  m-24 rounded overflow-hidden shadow-lg">
-      <img class="w-full" src="https://picsum.photos/400/300" alt="Blog Image">
-      <div class="px-6 py-4">
-        <h2 class="font-bold text-2xl mb-2">This is My Blog Title</h2>
-        <p class="mt-3 text-gray-600 text-base">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
-        </p>
-        <button class="mt-4 bg-blue-500 text-white font-bold py-2 px-4 rounded">
-            Read More
-        </button>
-      </div>
+@extends('layouts.app')
+
+@section('title', 'Home')
+@section('content')
+    <div class="container">
+        <!-- banner starts -->
+
+        <section id="banner">
+            <div class="banner-slider">
+                <div class="banner-item bg1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner-content">
+                                    <div class="banner-text">
+                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
+                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
+                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
+                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
+                                            appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- <div class="banner-item bg2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner-content">
+                                    <div class="banner-text">
+                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
+                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
+                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
+                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
+                                            appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banner-item bg3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner-content">
+                                    <div class="banner-text">
+                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
+                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
+                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
+                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
+                                            appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+            </div>
+        </section>
+
+        <!-- banner ends -->
+
+        <!-- about starts -->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="about-img wow animate__animated animate__backInLeft">
+                            <img src="images/about-img.png" class="img-fluid w-100" alt="about-image">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="about-text text-center wow animate__animated animate__backInRight">
+                            <h3 class="mb-0 text-uppercase oswald-reg fs-30">About us</h3>
+                            <p class="mb-0 open-reg fs-16">Excellence through innovation is the central concept of our vision. 
+                                Together with the concept customer satisfaction with persistent relationship is the DNA of our 
+                                corporate culture. This vision helps us to find the driving way. In a competitive and fast changing 
+                                world, the business dynamics are constantly changing. Today only innovation can bring excellence 
+                                and add value to products and services that can satisfy our customers.</p>
+                            <div class="about-btn text-center">
+                                <a class="cta-btn text-white oswald-med fs-16 text-uppercase"
+                                    href="{{ route('about') }}">Learn
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about ends -->
     </div>
-  </body>
-</html>
+@endsection

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      @vite('resources/css/app.css')
+      @vite('resources/css/app_tail.css')
     <title>Laravel</title>
   </head>
 
@@ -22,7 +22,7 @@
         <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form class="space-y-6" method="POST" action ="{{ route('login_doctor_123')}}">
+                <form class="space-y-6" method="POST" action ="{{ route('doctor_login')}}">
                 {{csrf_field()}}
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
