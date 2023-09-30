@@ -53,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase oswald-reg fs-16 text-white"
-                                href="{{ route('appointment') }}">Appointment</a>
+                                href="{{ route('patient-dashboard') }}">Appointment</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase oswald-reg fs-16 text-white"

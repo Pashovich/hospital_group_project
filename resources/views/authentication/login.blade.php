@@ -13,7 +13,7 @@
             <div class="step" id="step1">
                 <h3>Sign In</h3>
 
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="email" placeholder="Email" required>
 
                 <input type="password" name="password" placeholder="Password" required>
                 <div class="btn-box">
@@ -23,7 +23,6 @@
                 <p>Don't have any account? Please <a href="/register">Register</a></p>
             </div>
         </form>
-
 
     </div>
 @endsection

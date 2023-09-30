@@ -12,22 +12,48 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
         $users =  [
             [
-                'id'=>1,
-                'name' => 'Patient_1',
+                'fname' => 'patient',
+                'lname' => 'First',
                 'email' => 'patient_one@mail.com',
+                'phone' => '3125123131231',
+                'address' => '10 Street',
+                'state' => 'NSW',
+                'role' => '1',
+                'gender' => 'Male',
+                'dob' => '1999-01-01',
+                'marital_status' => 'Single',
+                'taking_medicine' => TRUE,
+                'is_alcoholic' => TRUE,
+                'is_smoker' => TRUE,
+                'comments' => 'no comments',
                 'password'=> Hash::make('password'),
             ],
             [
-                'id'=>2,
-                'name' => 'Patient_2',
+                'fname' => 'patient',
+                'lname' => 'Second',
                 'email' => 'patient_two@mail.com',
-                'password'=> Hash::make('password_2'),
+                'phone' => '9282727727',
+                'address' => '11 Street',
+                'state' => 'NSW',
+                'role' => '1',
+                'gender' => 'Male',
+                'dob' => '1999-01-01',
+                'marital_status' => 'Single',
+                'taking_medicine' => TRUE,
+                'is_alcoholic' => TRUE,
+                'is_smoker' => TRUE,
+                'comments' => 'no comments',
+                'password'=> Hash::make('password'),
             ],
         ];
-        \App\Models\User::insert(
-            $users
+        \App\Models\User::Create(
+            $users[0]
+            );
+        \App\Models\User::Create(
+            $users[1]
             );
     }
     public function down(): void
