@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('role');
 
             $table->string('gender');
-            $table->timestamp('dob');
+            // $table->timestamp('dob');
             $table->string('marital_status');
             $table->boolean('taking_medicine');
             $table->string('is_alcoholic');

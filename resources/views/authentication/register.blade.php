@@ -1,8 +1,11 @@
+<html>
 
-@extends('layouts.app')
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-@section('title', 'Login')
-@section('content')
+<body>
     <div class="container">
         <div class="step-row">
             <div id="progress"></div>
@@ -23,7 +26,11 @@
                     <option value="1">Male</option>
                     <option value="0">Female</option>
                 </select>
-                
+                <div class="btn-box">
+                    <button type="button" id="Next1">Next</button>
+                </div>
+                <p style="margin-top: -26px">Allready have an account? Please <a href="/login">Sign In</a></p>
+        
             </div>
 
             <div class="step" id="step2">
@@ -33,7 +40,11 @@
                 <input type="text" name="address" placeholder="Address" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="password_2" placeholder="Confirm Password" required>
-
+                <div class="btn-box">
+                    <button type="button" id="Previous1">Previous</button>
+                    <button type="button" id="Next2">Next</button>
+                </div>
+                <p>Allready have an account? Please <a href="/login">Sign In</a></p>
             </div>
 
             <div class="step" id="step3">
@@ -60,7 +71,7 @@
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select> 
-                <textarea name="comments" placeholder="Include other comments regarding your Medical History" required></textarea>
+                <input type="text" name="comments" placeholder="Include other comments regarding your Medical History" required>
                 <div class="btn-box">
                     <button type="button" id="Previous2">Previous</button>
                     <button type="submit" id="submit">Submit</button>
@@ -74,5 +85,8 @@
 
 
     </div>
+    <script src="./scripts.js"></script>
+</body>
 
-@endsection
+</html>
+

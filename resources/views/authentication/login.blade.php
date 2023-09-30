@@ -1,7 +1,11 @@
-@extends('layouts.app')
+<html>
 
-@section('title', 'Login')
-@section('content')
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
 <div class="container">
         <div class="step-row">
             <div id="progress"></div>
@@ -25,4 +29,7 @@
         </form>
 
     </div>
-@endsection
+    <script src="./scripts.js"></script>
+</body>
+
+</html>
