@@ -12,49 +12,79 @@ class ScheduleSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Schedule::insert(
+        \App\Models\Schedule::Create(
+
+                [
+                    'doctor_id' =>1,
+                    'day_of_the_week' => 'Monday',
+                    'time' => '10:00'
+                ]);
+        \App\Models\Schedule::Create(
+        [
+            'doctor_id' =>1,
+            'day_of_the_week' => 'Monday',
+            'time' => '12:00'
+        ]);
+        \App\Models\Schedule::Create(
             [
-                [
-                    'doctor_id' =>1,
-                    'day_of_the_week' => 'Monday',
-                    'time' => '10:00'
-                ],
-                [
-                    'doctor_id' =>1,
-                    'day_of_the_week' => 'Monday',
-                    'time' => '12:00'
-                ],
-                [
-                    'doctor_id' =>1,
-                    'day_of_the_week' => 'Friday',
-                    'time' => '10:00'
-                ],
-                [
-                    'doctor_id' =>1,
-                    'day_of_the_week' => 'Friday',
-                    'time' => '13:00'
-                ],
-                [
-                    'doctor_id' =>2,
-                    'day_of_the_week' => 'Monday',
-                    'time' => '12:00'
-                ],
-                [
-                    'doctor_id' =>2,
-                    'day_of_the_week' => 'Monday',
-                    'time' => '12:30'
-                ],
-                [
-                    'doctor_id' =>2,
-                    'day_of_the_week' => 'Tuesday',
-                    'time' => '10:00'
-                ],
-                [
-                    'doctor_id' =>2,
-                    'day_of_the_week' => 'Tuesday',
-                    'time' => '13:00'
-                ],
-            ]
-            );
+                'doctor_id' =>1,
+                'day_of_the_week' => 'Monday',
+                'time' => '22:00'
+            ]);
+        \App\Models\Schedule::Create(
+            [
+                'doctor_id' =>1,
+                'day_of_the_week' => 'Friday',
+                'time' => '10:00'
+            ]);
+        \App\Models\Schedule::Create(
+            [
+                'doctor_id' =>1,
+                'day_of_the_week' => 'Monday',
+                'time' => '12:00'
+            ]);
+        \App\Models\Schedule::Create(
+            [
+                'doctor_id' =>1,
+                'day_of_the_week' => 'Monday',
+                'time' => '13:00'
+            ]);
+        \App\Models\Schedule::Create(
+        [
+            'doctor_id' =>2,
+            'day_of_the_week' => 'Monday',
+            'time' => '10:00'
+        ]);
+        \App\Models\Schedule::Create(
+        [
+            'doctor_id' =>2,
+            'day_of_the_week' => 'Monday',
+            'time' => '12:00'
+        ]);
+        \App\Models\Schedule::Create(
+        [
+            'doctor_id' =>2,
+            'day_of_the_week' => 'Monday',
+            'time' => '13:00'
+        ]);
+        \App\Models\Schedule::Create(
+        [
+            'doctor_id' =>2,
+            'day_of_the_week' => 'Tuesday',
+            'time' => '14:00'
+        ]);
+        \App\Models\Schedule::Create(
+            [
+                'doctor_id' =>2,
+                'day_of_the_week' => 'Tuesday',
+                'time' => '12:00'
+            ]);
+        \App\Models\Schedule::Create(
+            [
+                'doctor_id' =>2,
+                'day_of_the_week' => 'Tuesday',
+                'time' => '13:00'
+            ]);
+
     }
 }

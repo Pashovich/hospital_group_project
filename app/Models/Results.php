@@ -9,8 +9,6 @@ class Results extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'symptoms',
-        'prescription',
         'appointment_id'
     ];
     protected $primaryKey = 'id';

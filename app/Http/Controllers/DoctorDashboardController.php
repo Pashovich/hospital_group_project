@@ -40,11 +40,13 @@ class DoctorDashboardController extends Controller
                 SELECT *
                 FROM appointments a
                 INNER JOIN users t ON t.id = a.patient_id
+                INNER JOIN schedule s on s.id = a.schedule_id
                 WHERE a.date {$comparison} '{$currentDateTime}' AND a.doctor_id = {$doctor->id}
-                ORDER BY a.date, a.time
+                ORDER BY a.date, s.time
             ";
 
         $upcoming_users = DB::select($query);
+        // dd($upcoming_users);
         
         foreach ($upcoming_users as $appointment) {
             $appointment->date = $this->convert_date($appointment->date, 'd l M');
@@ -87,7 +89,7 @@ class DoctorDashboardController extends Controller
         $appointment = Appointment::find($appointment_id);
         $appointment->status = 'Finished';
         $appointment->save();
-        if ($resultRecord->doesntExist()){
+        if (is_null($resultRecord)){
             $resultRecord = new Results;
             $resultRecord->appointment_id = $appointment_id;
         }

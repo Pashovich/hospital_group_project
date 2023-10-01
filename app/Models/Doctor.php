@@ -29,4 +29,8 @@ class Doctor extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

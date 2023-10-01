@@ -17,11 +17,13 @@ class Appointment extends Model
         'patient_id',
         'doctor_id',
         'date',
-        'time',
-        'notes',
-        'status'
+        'status',
+        'schedule_id'
     ];
 
     protected $primaryKey = 'id';
-
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class, 'schedule_id', 'id');
+    }
 }

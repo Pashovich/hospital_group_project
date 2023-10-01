@@ -14,32 +14,29 @@ class AppointmentsSeeder extends Seeder
     {
         \App\Models\Appointment::create(
             [
-                'date' => '2023-01-02',
-                'time' =>'22:00',
-                'notes' => 'big note',
+                'date' => '2023-10-02',
                 'status' => 'True',
                 'patient_id' =>1,
-                'doctor_id' => 1
+                'doctor_id' => 1,
+                'schedule_id' => 1,
             ]
             );
         \App\Models\Appointment::create(
             [
-                'date' => '2023-01-02',
-                'time' =>'22:00',
-                'notes' => 'big note',
+                'date' => '2023-10-02',
                 'status' => 'True',
                 'patient_id' =>2,
-                'doctor_id' => 1
+                'doctor_id' => 1,
+                'schedule_id' => 2,
             ]
             );
         \App\Models\Appointment::create(
             [
-                'date' => '2023-11-02',
-                'time' =>'10:00',
-                'notes' => 'big note',
+                'date' => '2023-10-02',
                 'status' => 'True',
                 'patient_id' =>1,
-                'doctor_id' => 2
+                'doctor_id' => 2,
+                'schedule_id' => 8,
             ]
             );
     }

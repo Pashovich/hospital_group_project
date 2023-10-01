@@ -19,7 +19,7 @@
                                         We always try to adhere with legal compliance and give priority on employee health safety.</p>
                                     </div>
                                     <div class="banner-btn">
-                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
+                                        <a href="{{ route('schedule') }}" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
                                             appointment</a>
                                     </div>
                                 </div>
