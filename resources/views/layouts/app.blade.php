@@ -45,10 +45,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase oswald-reg fs-16 text-white"
-                                href="{{ route('record') }}">Medical Record</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase oswald-reg fs-16 text-white"
                                 href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
@@ -75,12 +71,12 @@
         <!-- footer starts -->
 
         <section id="footer">
-            <div class="container">
+            <div class="container" >
                 <div class="row">
                     <div class="col-lg-8 m-auto">
                         <div class="footer-bottom">
                             <p class="mb-0 open-reg fs-14 text-center">Copyright &copy; All rights reserved by
-                                <span>HSGP</span>.
+                                <span></span>.
                             </p>
                         </div>
                     </div>

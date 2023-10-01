@@ -18,4 +18,14 @@ class Schedule extends Model
         'doctor_id'
     ];
     protected $primaryKey = 'id';
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function appointments()
+{
+    return $this->hasMany(Appointment::class, 'schedule_id', 'id');
+}
 }

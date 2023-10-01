@@ -2,106 +2,62 @@
 
 @section('title', 'Doctor\'s Schedule')
 @section('content')
-    <div class="container">
-        <!-- banner starts -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <section id="banner">
-            <div class="banner-slider">
-                <div class="banner-item bg1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner-content">
-                                    <div class="banner-text">
-                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
-                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
-                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
-                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
-                                    </div>
-                                    <div class="banner-btn">
-                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
-                                            appointment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- <div class="banner-item bg2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner-content">
-                                    <div class="banner-text">
-                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
-                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
-                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
-                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
-                                    </div>
-                                    <div class="banner-btn">
-                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
-                                            appointment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="banner-item bg3">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner-content">
-                                    <div class="banner-text">
-                                        <h1 class="mb-0 oswald-bold fs-40 text-uppercase text-white">Your health is</h1>
-                                        <h2 class="mb-0 oswald-bold fs-60 text-uppercase text-white">Our priority</h2>
-                                        <p class="mb-0 open-reg fs-13 text-white">We ensure patient safety and quality of care as per international standard. 
-                                        We always try to adhere with legal compliance and give priority on employee health safety.</p>
-                                    </div>
-                                    <div class="banner-btn">
-                                        <a href="#" class="cta-btn text-white oswald-med fs-16 text-uppercase">Make an
-                                            appointment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-            </div>
-        </section>
-
-        <!-- banner ends -->
-
-        <!-- about starts -->
-        <section id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="about-img wow animate__animated animate__backInLeft">
-                            <img src="images/about-img.png" class="img-fluid w-100" alt="about-image">
-                        </div>
-                    </div>
-                    <div class="col-lg-5 offset-lg-1">
-                        <div class="about-text text-center wow animate__animated animate__backInRight">
-                            <h3 class="mb-0 text-uppercase oswald-reg fs-30">About us</h3>
-                            <p class="mb-0 open-reg fs-16">Excellence through innovation is the central concept of our vision. 
-                                Together with the concept customer satisfaction with persistent relationship is the DNA of our 
-                                corporate culture. This vision helps us to find the driving way. In a competitive and fast changing 
-                                world, the business dynamics are constantly changing. Today only innovation can bring excellence 
-                                and add value to products and services that can satisfy our customers.</p>
-                            <div class="about-btn text-center">
-                                <a class="cta-btn text-white oswald-med fs-16 text-uppercase"
-                                    href="{{ route('about') }}">Learn
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- about ends -->
+<form method="GET" action="{{ route('schedule', ['speciality' => request('speciality'), 'time' => request('time'), 'week' => request('week')]) }}">
+    <div class="form-group">
+        <label for="speciality">Speciality:</label>
+        <select name="speciality" id="speciality" class="form-control">
+            <option value="">All Specialities</option>
+            @foreach ($specialities as $speciality)
+                <option value="{{ $speciality }}" {{ request('speciality') == $speciality ? 'selected' : '' }}>
+                    {{ $speciality }}
+                </option>
+            @endforeach
+        </select>
     </div>
+
+
+    <div class="form-group">
+        <label for="week">Select Week:</label>
+        <input type="week" name="week" id="week" class="form-control" value="{{ request('week') }}" required>
+    </div>
+    @if ($errors->has('week'))
+        <div class="alert alert-danger">
+            {{ $errors->first('week') }}
+        </div>
+    @endif
+    <button type="submit" class="btn btn-primary">Apply Filters</button>
+</form>
+<table class="table">
+        <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Time</th>
+                <th>Day of the Week</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($schedules as $schedule)
+                <tr>
+                    <td>{{ $schedule->doctor->first_name }} {{ $schedule->doctor->last_name }}</td>
+                    <td>{{ $schedule->time }}</td>
+                    <td>{{ $schedule->day_of_the_week }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('schedule.store') }}">
+                            @csrf
+                            <input type="hidden" name="doctor_id" value="{{ $schedule->doctor_id }}">
+                            <input type="hidden" name="schedule_id" value="{{ $schedule->id }}">
+                            <input type="hidden" name="day_of_the_week" value="{{ $schedule->day_of_the_week }}">
+                            <input type="hidden" name="week" value="{{ request('week') }}">
+                            <button type="submit" class="btn btn-success">Make Appointment</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 @endsection

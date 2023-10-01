@@ -48,6 +48,9 @@ class AuthController extends Controller
 
     public function login()
     {
+        if (auth()->check()){
+            return redirect()->route('patient-dashboard');
+        }
         return view('authentication.login');
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorDashboard;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AppointmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,5 +49,10 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/post-register', [AuthController::class, 'postRegister'])->name('post-register');
 
 Route::get('/patient/dashboard', [AuthController::class, 'patientDashboard'])->name('patient-dashboard')->middleware('auth');
+
+Route::get('/schedule/{speciality?}/{time?}', [AppointmentController::class, 'index'])->name('schedule');
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('schedule.store');
+Route::get('/confirmation', [AppointmentController::class, 'confirmation'])->name('confirmation');
+
 
 
