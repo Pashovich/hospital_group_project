@@ -72,6 +72,7 @@ class AuthController extends Controller
                 SELECT *
                 FROM appointments a
                 left join doctors d on d.id = a.doctor_id
+                left join results r on r.appointment_id = a.id
                 WHERE patient_id = {$user->id}
             ";
 

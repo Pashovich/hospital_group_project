@@ -34,6 +34,7 @@
         <thead>
             <tr>
                 <th>Doctor</th>
+                <th>Speciality</th>
                 <th>Time</th>
                 <th>Day of the Week</th>
             </tr>
@@ -42,6 +43,7 @@
             @foreach ($schedules as $schedule)
                 <tr>
                     <td>{{ $schedule->doctor->first_name }} {{ $schedule->doctor->last_name }}</td>
+                    <td>{{ $schedule->doctor->speciality }}</td>
                     <td>{{ $schedule->time }}</td>
                     <td>{{ $schedule->day_of_the_week }}</td>
                     <td>

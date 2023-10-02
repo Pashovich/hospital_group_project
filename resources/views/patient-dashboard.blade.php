@@ -30,7 +30,9 @@
                     <strong>Appointment Date:</strong> {{$appointment->date}}<br>
                     <strong>Doctor:</strong> {{$appointment->first_name}} {{$appointment->last_name}}<br>
                     <strong>Department:</strong> {{$appointment->speciality}}<br>
-                    <strong>Status:</strong> {{$appointment->status}}
+                    <strong>Status:</strong> {{$appointment->status}}<br>
+                    <strong>Prescription:</strong> {{$appointment->prescription}}<br>
+                    <strong>Symptoms:</strong> {{$appointment->symptoms}}<br>
                 </li>
             @endforeach
             </ul>
