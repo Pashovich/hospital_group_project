@@ -30,6 +30,8 @@ Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'
 Route::get('/doctors-schedule', [App\Http\Controllers\HomeController::class, 'schedule'])->name('schedule');
 Route::get('/appointment', [App\Http\Controllers\HomeController::class, 'appointment'])->name('appointment');
 Route::get('/medical-record', [App\Http\Controllers\HomeController::class, 'record'])->name('record');
+Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
 
 Route::get('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_show'])->name('doctor_login');
 Route::post('/doctor_dashboard/login', [DoctorDashboardController::class, 'login_doctor'])->name('doctor_login');
