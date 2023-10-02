@@ -18,7 +18,8 @@ class Appointment extends Model
         'doctor_id',
         'date',
         'status',
-        'schedule_id'
+        'schedule_id',
+        'appointment_time'
     ];
 
     protected $primaryKey = 'id';

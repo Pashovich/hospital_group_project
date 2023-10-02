@@ -16,10 +16,12 @@ return new class extends Migration
             $table->timestamps();
             $table->date('date');
             $table->string('status');
+            $table->string('appointment_time')->nullable();
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('patient_id')->references('id')->on('users');
             $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->string('schedule_id')->nullable();
         });
     }
 

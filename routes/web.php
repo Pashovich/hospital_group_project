@@ -50,9 +50,11 @@ Route::post('/post-register', [AuthController::class, 'postRegister'])->name('po
 
 Route::get('/patient/dashboard', [AuthController::class, 'patientDashboard'])->name('patient-dashboard')->middleware('auth');
 
-Route::get('/schedule/{speciality?}/{time?}', [AppointmentController::class, 'index'])->name('schedule');
+// Route::get('/schedule/{speciality?}/{time?}', [AppointmentController::class, 'index'])->name('schedule');
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('schedule.store');
 Route::get('/confirmation', [AppointmentController::class, 'confirmation'])->name('confirmation');
-
+Route::get('/schedule', [AppointmentController::class, 'index'])->name('schedule');
+Route::get('/get-appointment', [AppointmentController::class, 'getAppointment'])->name('get-appointment');
+Route::post('/make-appointment', [AppointmentController::class, 'makeAppointment'])->name('make-appointment');
 
 

@@ -7,6 +7,7 @@ use App\Models\Schedule;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 
 
@@ -108,5 +109,33 @@ class AppointmentController extends Controller
     public function confirmation()
     {
         return view('confirmation');
+    }
+
+
+    public function getAppointment()
+    {
+        $specialities = Doctor::distinct('speciality')->pluck('speciality');
+        $doctors = Doctor::all();
+
+        $myAppointments = Appointment::where('patient_id', Auth::user()->id)->get();
+
+        foreach ($myAppointments as $app) {
+            $doctor = Doctor::where('id', $app->doctor_id)->first();
+            $app->doc_name = $doctor->first_name . ' ' . $doctor->last_name;
+        }
+        return view('doctor-appointment',compact('specialities','doctors','myAppointments'));
+    }
+
+    public function makeAppointment(Request $request)
+    {
+        // return $request->all();
+        Appointment::create([
+            'appointment_time' => $request->appointment_time,
+            'date' => $request->date,
+            'doctor_id' => $request->doctor_id,
+            'patient_id' => Auth::user()->id,
+            'status' => "created"
+        ]);
+        return redirect()->back();
     }
 }
