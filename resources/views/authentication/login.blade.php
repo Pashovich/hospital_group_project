@@ -8,7 +8,7 @@
             <div class="step-col"><small style="color: white;">HMS</small></div>
 
         </div>
-        <form action="/post-login" method="post">
+        <form action="{{route('post-login')}}" method="post">
             @csrf
             <div class="step" id="step1">
                 <h3>Sign In</h3>
@@ -20,7 +20,7 @@
                     <button type="submit" id="">Sign In</button>
                 </div>
 
-                <p>Don't have any account? Please <a href="/register">Register</a></p>
+                <p>Don't have any account? Please <a href="{{route('register')}}">Register</a></p>
             </div>
         </form>
 

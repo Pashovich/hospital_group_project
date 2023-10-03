@@ -11,7 +11,7 @@
             <div class="step-col"><small style="color: white;">Step 3</small></div>
 
         </div>
-        <form action="/post-register" method="post">
+        <form action="{{route('post-register')}}" method="post">
             @csrf
             <div class="step" id="step1">
                 <h3>PERSONAL DATA</h3>
@@ -66,7 +66,7 @@
                     <button type="submit" id="submit">Submit</button>
                 </div>
                 <br>
-                <p style="margin-top: -26px;margin-left: 20px;">Already have an account? Please <a href="/login">Sign In</a></p>
+                <p style="margin-top: -26px;margin-left: 20px;">Already have an account? Please <a href="{{route('login')}}">Sign In</a></p>
             </div>
             
         </form>

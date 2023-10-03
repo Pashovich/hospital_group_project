@@ -28,15 +28,11 @@ class AppointmentController extends Controller
             });
         }
     
-        if ($dayOfWeekFilter) {
-            $query->where('day_of_the_week', $dayOfWeekFilter);
-        }
     
         // Filter schedules based on appointments within the selected week
         if ($weekFilter) {
             $startOfWeek = Carbon::parse($weekFilter)->startOfWeek();
             $endOfWeek = Carbon::parse($weekFilter)->endOfWeek();
-    
             $query->whereDoesntHave('appointments', function ($subQuery) use ($startOfWeek, $endOfWeek) {
                 $subQuery->whereBetween('date', [$startOfWeek, $endOfWeek]);
             });
@@ -45,7 +41,6 @@ class AppointmentController extends Controller
         $schedules = $query->get();
     
         $specialities = Doctor::distinct('speciality')->pluck('speciality');
-        // dd($schedules);
         return view('schedule', compact('schedules', 'specialities'));
     }
 
@@ -63,6 +58,7 @@ class AppointmentController extends Controller
             $errorMessage = 'Selected week is in the past.';
             return redirect()->back()->withErrors(['week' => $errorMessage])->withInput();
         }
+
         if (auth()->check()){
             $schedule_id = $request->input('schedule_id');
             $selected_day_of_week = $request->input('day_of_the_week');
@@ -74,7 +70,10 @@ class AppointmentController extends Controller
             else{
                 $selected_date = $start_of_week->copy()->next($selected_day_of_week);
             }
-            
+            if (  Carbon::now()->gt($selected_date) ) {
+                $errorMessage = 'Selected date is in the past.';
+                return redirect()->back()->withErrors(['week' => $errorMessage])->withInput();
+            }
             $patient_id = auth()->user()->id;
             $doctor_id = $request->input('doctor_id');
             Appointment::create([

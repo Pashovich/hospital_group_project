@@ -14,11 +14,11 @@ class ScheduleSeeder extends Seeder
     {
         \App\Models\Schedule::Create(
 
-                [
-                    'doctor_id' =>1,
-                    'day_of_the_week' => 'Monday',
-                    'time' => '10:00'
-                ]);
+        [
+            'doctor_id' =>1,
+            'day_of_the_week' => 'Monday',
+            'time' => '10:00'
+        ]);
         \App\Models\Schedule::Create(
         [
             'doctor_id' =>1,
@@ -40,13 +40,13 @@ class ScheduleSeeder extends Seeder
         \App\Models\Schedule::Create(
             [
                 'doctor_id' =>1,
-                'day_of_the_week' => 'Monday',
+                'day_of_the_week' => 'Friday',
                 'time' => '12:00'
             ]);
         \App\Models\Schedule::Create(
             [
                 'doctor_id' =>1,
-                'day_of_the_week' => 'Monday',
+                'day_of_the_week' => 'Friday',
                 'time' => '13:00'
             ]);
         \App\Models\Schedule::Create(

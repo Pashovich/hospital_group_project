@@ -35,16 +35,23 @@ class DoctorDashboardController extends Controller
     }
     private function get_users($doctor, $comparison){
         $currentDateTime = now();
-
         $query = "
-                SELECT *
-                FROM appointments a
-                INNER JOIN users t ON t.id = a.patient_id
-                INNER JOIN schedule s on s.id = a.schedule_id
-                WHERE a.date {$comparison} '{$currentDateTime}' AND a.doctor_id = {$doctor->id}
-                ORDER BY a.date, s.time
-            ";
-
+            SELECT a.id, a.date,s.time,
+            t.fname,
+            t.lname,
+            t.gender,
+            t.dob,
+            t.marital_status,
+            t.taking_medicine,
+            t.is_alcoholic,
+            t.is_smoker,
+            t.comments
+            FROM appointments a
+            INNER JOIN users t ON t.id = a.patient_id
+            INNER JOIN schedule s on s.id = a.schedule_id
+            WHERE a.date {$comparison} '{$currentDateTime}' AND a.doctor_id = {$doctor->id}
+            ORDER BY a.date, s.time
+        ";
         $upcoming_users = DB::select($query);
         // dd($upcoming_users);
         
