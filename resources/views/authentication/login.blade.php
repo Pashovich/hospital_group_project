@@ -1,9 +1,10 @@
-@extends('layouts.app')
+<html>
 
-@section('title', 'Login')
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-@section('content')
-<link rel="stylesheet" href="style.css">
 <body class="login_register_body">
 <div class="login_register_container">
         <div class="lr-step-row">
@@ -30,4 +31,5 @@
     </div>
     <script src="./scripts.js"></script>
 </body>
-@endsection
+
+</html>
