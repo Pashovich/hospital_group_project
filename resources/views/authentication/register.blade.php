@@ -5,18 +5,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="container">
-        <div class="step-row">
+<body class="login_register_body">
+    <div class="login_register_container">
+        <div class="lr-step-row">
             <div id="progress"></div>
-            <div class="step-col"><small style="color: white;">Step 1</small></div>
-            <div class="step-col"><small style="color: white;">Step 2</small></div>
-            <div class="step-col"><small style="color: white;">Step 3</small></div>
+            <div class="step-col-lr"><small style="color: white;">Step 1</small></div>
+            <div class="step-col-lr"><small style="color: white;">Step 2</small></div>
+            <div class="step-col-lr"><small style="color: white;">Step 3</small></div>
 
         </div>
         <form action="/post-register" method="post">
             @csrf
-            <div class="step" id="step1">
+            <div class="step-lr" id="step1">
                 <h3>PERSONAL DATA</h3>
                 <input type="text" name="fname" placeholder="First Name" required>
                 <input type="text" name="lname" placeholder="Last Name" required>
@@ -33,7 +33,7 @@
         
             </div>
 
-            <div class="step" id="step2">
+            <div class="step-lr" id="step2">
                 <h3>CONTACT & SECURITY</h3>
                 <input type="text" name="email" placeholder="Email" required>
                 <input type="text" name="phone" placeholder="Phone Number" required>
@@ -47,7 +47,7 @@
                 <p>Allready have an account? Please <a href="/login">Sign In</a></p>
             </div>
 
-            <div class="step" id="step3">
+            <div class="step-lr" id="step3">
                 <h3>History</h3>
                 <select class="form-select" name="marital_status" id="" required>
                     <option disbaled value="">Marital Status?</option>

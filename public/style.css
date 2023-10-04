@@ -4,7 +4,7 @@
 	font-family: san-serif;
 }
 
-body {
+.login_register_body {
 	/* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(banner.jpeg); */
 	/* background-color: #000; */
 	background: linear-gradient(to right, #130d01, #007180);
@@ -12,7 +12,7 @@ body {
 	background-size: cover;
 }
 
-.container {
+.login_register_container {
 	width: 400px;
 	height: 500px;
 	margin: 8% auto;
@@ -36,7 +36,7 @@ h3 {
 	transition: 0.5s
 } */
 
-.step {
+.step-lr {
 	width: 320px;
 	position: absolute;
 	top: 100px;
@@ -44,7 +44,7 @@ h3 {
 	transition: 0.5s
 }
 
-.step input {
+.step-lr input {
 	width: 100%;
 	padding: 10px 5px;
 	margin: 5px 0;
@@ -53,7 +53,7 @@ h3 {
 	outline: none;
 	background: transparent;
 }
-.step select {
+.step-lr select {
 	width: 100%;
 	padding: 10px 5px;
 	margin: 5px 0;
@@ -74,7 +74,7 @@ h3 {
 	text-align: center;
 }
 
-.step button {
+.step-lr button {
 	width: 110px;
 	height: 35px;
 	margin: 0 10px;
@@ -94,7 +94,7 @@ h3 {
 	top: 550px;
 }
 
-.step-row {
+.lr-step-row {
 	width: 400px;
 	height: 40px;
 	margin: 0 auto;
@@ -104,7 +104,7 @@ h3 {
 	position: relative;
 }
 
-.step-col {
+.step-col-lr {
 	width: 120px;
 	text-align: center;
 	color: #333;

@@ -1,20 +1,19 @@
-<html>
+@extends('layouts.app')
 
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+@section('title', 'Login')
 
-<body>
-<div class="container">
-        <div class="step-row">
+@section('content')
+<link rel="stylesheet" href="style.css">
+<body class="login_register_body">
+<div class="login_register_container">
+        <div class="lr-step-row">
             <div id="progress"></div>
-            <div class="step-col"><small style="color: white;">HMS</small></div>
+            <div class="step-col-lr"><small style="color: white;">HMS</small></div>
 
         </div>
         <form action="/post-login" method="post">
             @csrf
-            <div class="step" id="step1">
+            <div class="step-lr" id="step1">
                 <h3>Sign In</h3>
 
                 <input type="text" name="email" placeholder="Email" required>
@@ -31,5 +30,4 @@
     </div>
     <script src="./scripts.js"></script>
 </body>
-
-</html>
+@endsection
