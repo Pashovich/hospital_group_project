@@ -22,6 +22,7 @@ class AuthController extends Controller
         // Create a new patient
 
         $martial_starus = ["" =>"", "0" => "Maried", "1" => "Signle"];
+        $gender_status = ["" =>"", "1" => "Male", "0" => "Female"];
         $alcohol_status = ["" =>"", "0" => "I don't drink", "1" => "1/2 Glass/Day","2" => "3/4 Glass/Day", "3" => "More than 4 Glass/Day"];
         $patient = new User();
         $patient->fname = $request->fname;
@@ -33,7 +34,8 @@ class AuthController extends Controller
         $patient->role = '1';
         $patient->password = Hash::make($request->password);
 
-        $patient->gender = $request->gender;
+        $patient->gender = $gender_status[$request->gender];
+        
         $patient->dob = $request->dob;
         $patient->marital_status = $martial_starus[$request->marital_status];
         $patient->taking_medicine = $request->taking_medicine;

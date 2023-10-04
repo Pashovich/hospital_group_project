@@ -29,7 +29,8 @@
          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Alcoholic Type : {{$appointment->is_alcoholic}}</p>
          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Is Smoker : {{$appointment->is_smoker}}</p>
          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Comments : {{$appointment->comments}}</p>
-         <div class="absolute inset-x-0 bottom-0 h-16">
+
+         <div class="sticky inset-x-0 bottom-0 h-16">
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded appointment-link" data-toggle="application-info-{{$appointment->id}}">
                   Close
             </button>

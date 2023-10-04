@@ -48,7 +48,6 @@ class AppointmentController extends Controller
     {
         $selected_week = $request->input('week');
         if (!$selected_week){
-            // dd('Error');
             $errorMessage = 'Week is required. Please select a week.';
             return redirect()->back()->withErrors(['week' => $errorMessage])->withInput();
         }

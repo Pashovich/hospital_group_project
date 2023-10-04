@@ -12,7 +12,7 @@
             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
             </a>
-            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                 <!-- CSRF Token -->
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
